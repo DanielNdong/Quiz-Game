@@ -29,4 +29,10 @@ export default [
     c: "CO2",
     d: "H2O",
   },
+  {
+    b: "[]",
+    a: "SintaxError",
+    d: '"0"',
+    c: "Ninguna de las anteriores",
+  },
 ];
