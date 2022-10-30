@@ -1,0 +1,11 @@
+.OptionCorrect{
+    background-color: green;
+    color: #fff;
+}
+.OptionIncorrect{
+    background-color: red;
+    color: #fff;
+}
+.AnySelection{
+    background-color: lightblue;
+}
