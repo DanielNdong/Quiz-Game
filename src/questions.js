@@ -4,8 +4,8 @@ export default [
         resp: "Malabo"
     },
     {
-        ques: "Cuantos continentes hay:",
-        resp: "6"
+        ques: "Que devuelve el código: +Number(100) - 1/0",
+        resp: "-Infinity"
     },
     {
         ques: "Como se llama nuestro planeta?",
