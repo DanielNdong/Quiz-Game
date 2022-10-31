@@ -69,21 +69,11 @@ export default function App() {
       setAciertos((acier) => acier + 1);
     }
   };
-
-  /* useEffect(() => {
-    if (isCorrect) {
-      setAciertos((aciertos) => aciertos + 1);
-    } else if (isCorrect === false && isCorrect !== null && errores > 0) {
-      setErrores((errores) => errores - 1);
-    }
-  }, [btnValue]); */
-
   //Detectar si ya se respondieron todas las preguntas
   console.log(numQuest);
   console.log("Aciertos: " + aciertos);
   console.log("Errores: " + errores);
 
-  //Presentar a Roxanna este fragmento de código sobre newValue y btnValue
   //Si el valor devuelto por este metodo es true se pasa a la siguiente pregunta automaticamente
   const getbtnValue = (newValue) => {
     setBtnValue(newValue);
