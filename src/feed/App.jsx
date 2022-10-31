@@ -51,8 +51,8 @@ export default function App() {
       </>
     );
     //Si se agota el tiempo se muestra ese mensaje
-  } else if (currentTime === 0) {
-    return <div>Fin del juego</div>;
+  } else if (currentTime === 0 && aciertos + errores < questions.length) {
+    return <div>Se te agotó el tiempo</div>;
   }
 
   //setErrores

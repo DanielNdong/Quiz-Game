@@ -24,7 +24,7 @@ export function ButtonView({
         getbtnValue(buttonRef.current.value);
         setTimeout(() => {
           nextQuestion();
-        }, 1000);
+        }, 600);
       }}
       ref={buttonRef}
       value={opt}
