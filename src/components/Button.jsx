@@ -24,7 +24,7 @@ export function Button({
               <ButtonView
                 getSetNumQuest={getSetNumQuest}
                 numQuest={numQuest}
-                nameClass="OptionCorrect"
+                nameClass={"OptionCorrect"}
                 key={index}
                 isCorrect={isCorrect}
                 opt={opt}
@@ -42,7 +42,7 @@ export function Button({
               <ButtonView
                 getSetNumQuest={getSetNumQuest}
                 numQuest={numQuest}
-                nameClass="OptionIncorrect"
+                nameClass={"OptionIncorrect"}
                 key={index}
                 isCorrect={isCorrect}
                 opt={opt}

@@ -15,14 +15,17 @@ export function ButtonView({
   const nextQuestion = () => {
     getSetNumQuest(numQuest + 1);
   };
+
   return (
     <button
       key={index}
       className={nameClass}
       //className= {isCorrect === null ? 'AnySelection' : isCorrect ? 'OptionCorrect' : 'OptionIncorrect' }
       onClick={() => {
-        nextQuestion();
         getbtnValue(buttonRef.current.value);
+        setTimeout(() => {
+          nextQuestion();
+        }, 1000);
       }}
       ref={buttonRef}
       value={opt}

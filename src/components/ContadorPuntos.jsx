@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
+import questions from "../request/questions";
 
-export function ContadorPuntos({ isCorrect, btnValue }) {
-  const [contador, setContador] = useState(0);
+export function ContadorPuntos({
+  btnValue,
+  aciertos,
+  errores,
+  setUserAciertos,
+  setUserErrores,
+}) {
   useEffect(() => {
-    if (isCorrect) {
-      setContador((contador) => contador + 1);
-    } else if (isCorrect === false && isCorrect !== null && contador > 0) {
-      setContador((contador) => contador - 1);
-    }
+    setUserErrores();
+    setUserAciertos();
   }, [btnValue]);
-  return <div>{contador}</div>;
+
+  return (
+    <div>
+      Aciertos: {aciertos} Errores: {errores}
+    </div>
+  );
 }
