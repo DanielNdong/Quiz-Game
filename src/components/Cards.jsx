@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { CardView } from "./CardView";
 
 export function Cards({ numQuest, questions, getCurrentQuestion }) {
