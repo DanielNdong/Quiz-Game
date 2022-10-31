@@ -3,19 +3,22 @@ import { Fragment, useEffect, useState } from "react";
 import { Cards } from "../components/Cards";
 import { ButtonWrapper } from "../components/ButtonWrapper";
 import { Temporizador } from "../components/Temporizador";
+import { ContadorPuntos } from "../components/ContadorPuntos";
 import "./styles/App.css";
 import questions from "../request/questions";
 import responses from "../request/responses";
 
 export default function App() {
   const [respons, setResponses] = useState(responses);
-  const [btnValue, setBtnValue] = useState(null);
-  const [currentQuestion, setCurrentQuestion] = useState(null);
-  const [isCorrect, setIsCorrect] = useState(null);
-  const [numQuest, setNumQuest] = useState(0);
-  const [currentTime, setCurrentTime] = useState(15);
-  const [increasedTime, setIncreasedTime] = useState(1800);
-
+  const [btnValue, setBtnValue] = useState(null); //Valor del boton al hacer click
+  const [currentQuestion, setCurrentQuestion] = useState(null); //Respuesta actual / cambiar respuesta
+  const [isCorrect, setIsCorrect] = useState(null); //Respuesta acertada o no acertada
+  const [numQuest, setNumQuest] = useState(0); //Indice de la respuesta actual / cambiar indice
+  const [currentTime, setCurrentTime] = useState(15); //Tiempo actual
+  const [increasedTime, setIncreasedTime] = useState(1800); //Vecidad del cambio de tiempo de los intervalos
+  const [aciertos, setAciertos] = useState(0);
+  const [errores, setErrores] = useState(0);
+  //Actualizamos el temporizador cada vez que cambia el valor de la variable 'btnValue'
   useEffect(() => {
     if (currentTime === 0) return;
     const id = setInterval(() => {
@@ -25,21 +28,60 @@ export default function App() {
     return () => clearInterval(id);
   }, [currentTime]);
 
+  //Metodo para cambiar la velocidad de incremento del temporizador
   const changeIngreseTimeTimer = (increaser) => {
     setIncreasedTime(increaser);
   };
-
-  if (currentTime === 0) {
-    return <div>Fin del juego</div>;
-  }
-
+  //Establecemos el indice que nos encontramos en el array
   const getSetNumQuest = (param) => {
     setNumQuest(param);
   };
-
+  //Establecemos la pregunta correspondiente
   const getCurrentQuestion = (ques) => {
     setCurrentQuestion(ques);
   };
+
+  //Contabilizar aciertos y errores
+  if (aciertos + errores === questions.length && currentTime !== 0) {
+    return (
+      <>
+        <div>FIN DEL QUIZ GAME</div>
+        <div>Acertaste {aciertos}/6 preguntas</div>
+        <div>Fallaste {errores}/6 preguntas</div>
+      </>
+    );
+  } else if (currentTime === 0) {
+    return <div>Fin del juego</div>;
+  }
+
+  //Si se agota el tiempo se muestra ese mensaje
+
+  //setErrores
+  const setUserErrores = () => {
+    if (isCorrect === false && isCorrect !== null) {
+      setErrores((err) => err + 1);
+    }
+  };
+
+  //setAciertos
+  const setUserAciertos = () => {
+    if (isCorrect) {
+      setAciertos((acier) => acier + 1);
+    }
+  };
+
+  /* useEffect(() => {
+    if (isCorrect) {
+      setAciertos((aciertos) => aciertos + 1);
+    } else if (isCorrect === false && isCorrect !== null && errores > 0) {
+      setErrores((errores) => errores - 1);
+    }
+  }, [btnValue]); */
+
+  //Detectar si ya se respondieron todas las preguntas
+  console.log(numQuest);
+  console.log("Aciertos: " + aciertos);
+  console.log("Errores: " + errores);
 
   //Presentar a Roxanna este fragmento de código sobre newValue y btnValue
   //Si el valor devuelto por este metodo es true se pasa a la siguiente pregunta automaticamente
@@ -61,11 +103,11 @@ export default function App() {
         getCurrentQuestion={getCurrentQuestion}
       />
       <ButtonWrapper
+        getSetNumQuest={getSetNumQuest}
         numQuest={numQuest}
-        item={responses}
+        listResponses={responses}
         btnValue={btnValue}
         currentQuestion={currentQuestion}
-        responses={respons}
         isCorrect={isCorrect}
         getbtnValue={getbtnValue}
       />
@@ -73,8 +115,14 @@ export default function App() {
         currentTime={currentTime}
         changeIngreseTimeTimer={changeIngreseTimeTimer}
       />
-      {/* <p>{currentQuestion}</p>
-      <p>{btnValue}</p> */}
+      <ContadorPuntos
+        setUserAciertos={setUserAciertos}
+        setUserErrores={setUserErrores}
+        aciertos={aciertos}
+        errores={errores}
+        btnValue={btnValue}
+        numQuest={numQuest}
+      />
     </Fragment>
   );
 }
