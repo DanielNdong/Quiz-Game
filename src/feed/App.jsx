@@ -3,19 +3,21 @@ import { Fragment, useEffect, useState } from "react";
 import { Cards } from "../components/Cards";
 import { ButtonWrapper } from "../components/ButtonWrapper";
 import { Temporizador } from "../components/Temporizador";
+import { ContadorPuntos } from "../components/ContadorPuntos";
 import "./styles/App.css";
 import questions from "../request/questions";
 import responses from "../request/responses";
 
 export default function App() {
   const [respons, setResponses] = useState(responses);
-  const [btnValue, setBtnValue] = useState(null);
-  const [currentQuestion, setCurrentQuestion] = useState(null);
-  const [isCorrect, setIsCorrect] = useState(null);
-  const [numQuest, setNumQuest] = useState(0);
-  const [currentTime, setCurrentTime] = useState(15);
-  const [increasedTime, setIncreasedTime] = useState(1800);
+  const [btnValue, setBtnValue] = useState(null); //Valor del boton al hacer click
+  const [currentQuestion, setCurrentQuestion] = useState(null); //Pregunta actual / cambiar pregunta
+  const [isCorrect, setIsCorrect] = useState(null); //Respuesta acertada o no acertada
+  const [numQuest, setNumQuest] = useState(0); //Indice de la respuesta actual / cambiar indice
+  const [currentTime, setCurrentTime] = useState(15); //Tiempo actual
+  const [increasedTime, setIncreasedTime] = useState(1800); //Vecidad del cambio de tiempo de los intervalos
 
+  //Actualizamos el temporizador cada vez que cambia el valor de la variable 'btnValue'
   useEffect(() => {
     if (currentTime === 0) return;
     const id = setInterval(() => {
@@ -25,21 +27,22 @@ export default function App() {
     return () => clearInterval(id);
   }, [currentTime]);
 
+  //Metodo para cambiar la velocidad de incremento del temporizador
   const changeIngreseTimeTimer = (increaser) => {
     setIncreasedTime(increaser);
+  };
+  //Establecemos el indice que nos encontramos en el array
+  const getSetNumQuest = (param) => {
+    setNumQuest(param);
+  };
+  //Establecemos la pregunta correspondiente
+  const getCurrentQuestion = (ques) => {
+    setCurrentQuestion(ques);
   };
 
   if (currentTime === 0) {
     return <div>Fin del juego</div>;
   }
-
-  const getSetNumQuest = (param) => {
-    setNumQuest(param);
-  };
-
-  const getCurrentQuestion = (ques) => {
-    setCurrentQuestion(ques);
-  };
 
   //Presentar a Roxanna este fragmento de código sobre newValue y btnValue
   //Si el valor devuelto por este metodo es true se pasa a la siguiente pregunta automaticamente
@@ -61,11 +64,11 @@ export default function App() {
         getCurrentQuestion={getCurrentQuestion}
       />
       <ButtonWrapper
+        getSetNumQuest={getSetNumQuest}
         numQuest={numQuest}
-        item={responses}
+        listResponses={responses}
         btnValue={btnValue}
         currentQuestion={currentQuestion}
-        responses={respons}
         isCorrect={isCorrect}
         getbtnValue={getbtnValue}
       />
@@ -73,8 +76,7 @@ export default function App() {
         currentTime={currentTime}
         changeIngreseTimeTimer={changeIngreseTimeTimer}
       />
-      {/* <p>{currentQuestion}</p>
-      <p>{btnValue}</p> */}
+      <ContadorPuntos isCorrect={isCorrect} btnValue={btnValue} />
     </Fragment>
   );
 }

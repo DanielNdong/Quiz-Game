@@ -24,10 +24,10 @@ export default [
     d: "23",
   },
   {
-    a: "ClSd",
-    b: "Ac2+SfFe",
-    c: "CO2",
-    d: "H2O",
+    c: "NaN",
+    a: "0",
+    b: '""',
+    d: "-0",
   },
   {
     b: "[]",

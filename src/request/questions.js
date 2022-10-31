@@ -16,8 +16,8 @@ export default [
     resp: "23",
   },
   {
-    ques: "Fórmula del agua",
-    resp: "H2O",
+    ques: 'Qué devuelve el código: "" + + ","',
+    resp: "NaN",
   },
   {
     ques: 'Que devuelve el código: " " + + " "   ',
