@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Button } from "./Button";
 export function ButtonWrapper({
   listResponses,
@@ -10,7 +9,6 @@ export function ButtonWrapper({
   currentQuestion,
 }) {
   console.log(numQuest);
-  //if (numQuest < 7) return <div>Ya no hay mas preguntas</div>;
   var myObject = listResponses.filter((item, i) => i == numQuest);
   return (
     <>
@@ -29,5 +27,3 @@ export function ButtonWrapper({
     </>
   );
 }
-
-//return <>{console.log(showArray.join().split(' '))}</>

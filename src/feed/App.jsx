@@ -50,11 +50,10 @@ export default function App() {
         <div>Fallaste {errores}/6 preguntas</div>
       </>
     );
+    //Si se agota el tiempo se muestra ese mensaje
   } else if (currentTime === 0) {
     return <div>Fin del juego</div>;
   }
-
-  //Si se agota el tiempo se muestra ese mensaje
 
   //setErrores
   const setUserErrores = () => {

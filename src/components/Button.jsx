@@ -50,7 +50,7 @@ export function Button({
               />
             </div>
           );
-        } /* if(btnValue !== opt && btnValue !== currentQuestion && btnValue !== null) */ else {
+        } else {
           return (
             <div>
               <ButtonView
