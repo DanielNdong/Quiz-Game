@@ -1,9 +1,9 @@
 export default [
   {
-    a: "Mongomo",
-    b: "Bata",
-    c: "Malabo",
-    d: "Paris",
+    a: "API",
+    b: "Framework",
+    c: "Modulo de JS",
+    d: "Libreria",
   },
   {
     a: "SintaxError",

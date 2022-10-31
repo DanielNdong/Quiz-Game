@@ -1,7 +1,7 @@
 export default [
   {
-    ques: "Capital de Guinea Ecuatorial",
-    resp: "Malabo",
+    ques: "React es un:",
+    resp: "Libreria",
   },
   {
     ques: "Que devuelve el código: +Number(100) - 1/0",
