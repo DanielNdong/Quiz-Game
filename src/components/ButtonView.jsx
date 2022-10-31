@@ -20,7 +20,6 @@ export function ButtonView({
     <button
       key={index}
       className={nameClass}
-      //className= {isCorrect === null ? 'AnySelection' : isCorrect ? 'OptionCorrect' : 'OptionIncorrect' }
       onClick={() => {
         getbtnValue(buttonRef.current.value);
         setTimeout(() => {
