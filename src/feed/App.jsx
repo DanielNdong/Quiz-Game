@@ -18,9 +18,13 @@ export default function App() {
   const [increasedTime, setIncreasedTime] = useState(1800); //Vecidad del cambio de tiempo de los intervalos
   const [aciertos, setAciertos] = useState(0);
   const [errores, setErrores] = useState(0);
+
+  var total = aciertos + errores;
+
   //Actualizamos el temporizador cada vez que cambia el valor de la variable 'btnValue'
   useEffect(() => {
     if (currentTime === 0) return;
+
     const id = setInterval(() => {
       setCurrentTime((currentTime) => currentTime - 1);
     }, increasedTime);
@@ -32,27 +36,19 @@ export default function App() {
   const changeIngreseTimeTimer = (increaser) => {
     setIncreasedTime(increaser);
   };
+
   //Establecemos el indice que nos encontramos en el array
   const getSetNumQuest = (param) => {
     setNumQuest(param);
   };
+
   //Establecemos la pregunta correspondiente
   const getCurrentQuestion = (ques) => {
     setCurrentQuestion(ques);
   };
-
-  //Contabilizar aciertos y errores
-  if (aciertos + errores === questions.length && currentTime !== 0) {
-    return (
-      <>
-        <div>FIN DEL QUIZ GAME</div>
-        <div>Acertaste {aciertos}/6 preguntas</div>
-        <div>Fallaste {errores}/6 preguntas</div>
-      </>
-    );
-    //Si se agota el tiempo se muestra ese mensaje
-  } else if (currentTime === 0 && aciertos + errores < questions.length) {
-    return <div>Se te agotó el tiempo</div>;
+  
+  const changeCurrentTime = (time) => {
+    setCurrentTime(time)
   }
 
   //setErrores
@@ -68,10 +64,15 @@ export default function App() {
       setAciertos((acier) => acier + 1);
     }
   };
-  //Detectar si ya se respondieron todas las preguntas
-  console.log(numQuest);
-  console.log("Aciertos: " + aciertos);
-  console.log("Errores: " + errores);
+
+  //Contabilizar aciertos y errores
+ 
+  if (currentTime === 0 && aciertos + errores !== questions.length) {
+    console.log(
+      "el total es" + (aciertos + errores) + "y la longitud" + questions.length
+    );
+    return <div>Se te agotó el tiempo</div>;
+  }
 
   //Si el valor devuelto por este metodo es true se pasa a la siguiente pregunta automaticamente
   const getbtnValue = (newValue) => {
@@ -110,8 +111,12 @@ export default function App() {
         aciertos={aciertos}
         errores={errores}
         btnValue={btnValue}
-        numQuest={numQuest}
+        currentTime={currentTime}
+        changeCurrentTime={changeCurrentTime}
       />
+      <div>
+        Aciertos: {aciertos} Errores: {errores}
+      </div>
     </Fragment>
   );
 }
