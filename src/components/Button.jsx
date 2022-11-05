@@ -24,7 +24,9 @@ export function Button({
               <ButtonView
                 getSetNumQuest={getSetNumQuest}
                 numQuest={numQuest}
-                nameClass={"OptionCorrect"}
+                nameClass={
+                  "OptionCorrect hover:bg-green-500 ring ring-green-500"
+                }
                 key={index}
                 isCorrect={isCorrect}
                 opt={opt}
@@ -38,11 +40,11 @@ export function Button({
           btnValue !== null
         ) {
           return (
-            <div>
+            <div className="">
               <ButtonView
                 getSetNumQuest={getSetNumQuest}
                 numQuest={numQuest}
-                nameClass={"OptionIncorrect"}
+                nameClass={"OptionIncorrect hover:bg-red-500 ring ring-red-500"}
                 key={index}
                 isCorrect={isCorrect}
                 opt={opt}
@@ -52,11 +54,11 @@ export function Button({
           );
         } else {
           return (
-            <div>
+            <div className="">
               <ButtonView
                 getSetNumQuest={getSetNumQuest}
                 numQuest={numQuest}
-                nameClass={"AnySelection"}
+                nameClass={"AnySelection "}
                 key={index}
                 isCorrect={isCorrect}
                 opt={opt}

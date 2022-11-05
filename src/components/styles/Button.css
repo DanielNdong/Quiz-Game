@@ -1,11 +1,9 @@
-.OptionCorrect{
-    background-color: green;
-    color: #fff;
+.OptionCorrect {
+  background-color: green;
 }
-.OptionIncorrect{
-    background-color: red;
-    color: #fff;
+.OptionIncorrect {
+  background-color: red;
 }
-.AnySelection{
-    background-color: lightblue;
+.AnySelection {
+  background-color: inherit;
 }
