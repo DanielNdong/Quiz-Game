@@ -19,7 +19,10 @@ export function ButtonView({
   return (
     <button
       key={index}
-      className={nameClass}
+      className={
+        "w-2/3 text-white font-semibold my-3 p-6 transition ease-in-out duration-300 max-w-sm mx-auto bg-white rounded-xl flex justify-center space-x-4 drop-shadow-lg border border-white hover:bg-zinc-100 hover:text-black " +
+        nameClass
+      }
       onClick={() => {
         getbtnValue(buttonRef.current.value);
         setTimeout(() => {

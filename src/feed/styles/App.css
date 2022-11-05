@@ -1,0 +1,23 @@
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(185, 19, 114);
+  background: linear-gradient(
+    90deg,
+    rgba(185, 19, 114, 1) 0%,
+    rgba(107, 15, 26, 1) 100%
+  );
+}
+
+main > section {
+  /*  position: relative; */
+  width: 38rem;
+  max-width: 80%;
+  height: 70%;
+  display: grid;
+  gap: 1.5rem;
+}

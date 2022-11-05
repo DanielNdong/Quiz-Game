@@ -1,26 +1,50 @@
 export default [
   {
-    ques: "React es un:",
-    resp: "Libreria",
+    ques: 'NaN === NaN',
+    resp: "false",
   },
   {
-    ques: "Que devuelve el código: +Number(100) - 1/0",
-    resp: "-Infinity",
+    ques: '2++',
+    resp: 'SintaxError',
   },
   {
-    ques: "Como se llama nuestro planeta?",
-    resp: "La Tierra",
+    ques: 'NaN++',
+    resp: 'NaN',
   },
   {
-    ques: "5 + 18",
-    resp: "23",
-  },
-  {
-    ques: 'Qué devuelve el código: "" + + ","',
+    ques: 'undefined + false',
     resp: "NaN",
   },
   {
-    ques: 'Que devuelve el código: " " + + " "   ',
+    ques: 'null + 0',
+    resp: "0",
+  },
+  {
+    ques: '0/0',
+    resp: "NaN",
+  },
+  {
+    ques: "+Number(100) - 1/0",
+    resp: "-Infinity",
+  },
+  {
+    ques: 'NaN + [false,true,1000]',
+    resp: 'NaNfalse,true,1000',
+  },
+  {
+    ques: 'NaN + Number(999)',
+    resp: "NaN",
+  },
+  {
+    ques: '"" + + ","',
+    resp: "NaN",
+  },
+  {
+    ques: '" " + + " "',
     resp: '"0"',
   },
+  {
+    ques: '- "" + + "1" * null - [,]',
+    resp: '0',
+  }
 ];

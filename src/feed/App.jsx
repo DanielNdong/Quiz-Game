@@ -18,9 +18,7 @@ export default function App() {
   const [increasedTime, setIncreasedTime] = useState(1800); //Vecidad del cambio de tiempo de los intervalos
   const [aciertos, setAciertos] = useState(0);
   const [errores, setErrores] = useState(0);
-
-  var total = aciertos + errores;
-
+  
   //Actualizamos el temporizador cada vez que cambia el valor de la variable 'btnValue'
   useEffect(() => {
     if (currentTime === 0) return;
@@ -46,10 +44,10 @@ export default function App() {
   const getCurrentQuestion = (ques) => {
     setCurrentQuestion(ques);
   };
-  
+
   const changeCurrentTime = (time) => {
-    setCurrentTime(time)
-  }
+    setCurrentTime(time);
+  };
 
   //setErrores
   const setUserErrores = () => {
@@ -65,13 +63,15 @@ export default function App() {
     }
   };
 
-  //Contabilizar aciertos y errores
- 
   if (currentTime === 0 && aciertos + errores !== questions.length) {
-    console.log(
-      "el total es" + (aciertos + errores) + "y la longitud" + questions.length
+    return (
+      <main>
+        <Temporizador currentTime={currentTime} />
+        <article className="h-20 flex gap-3 text-white text-2xl flex justify-center">
+          <span>Aciertos: {aciertos}</span> <span>Errores: {errores}</span>
+        </article>
+      </main>
     );
-    return <div>Se te agotó el tiempo</div>;
   }
 
   //Si el valor devuelto por este metodo es true se pasa a la siguiente pregunta automaticamente
@@ -85,38 +85,42 @@ export default function App() {
   };
 
   return (
-    <Fragment>
-      <Cards
-        numQuest={numQuest}
-        getSetNumQuest={getSetNumQuest}
-        questions={questions}
-        getCurrentQuestion={getCurrentQuestion}
-      />
-      <ButtonWrapper
-        getSetNumQuest={getSetNumQuest}
-        numQuest={numQuest}
-        listResponses={responses}
-        btnValue={btnValue}
-        currentQuestion={currentQuestion}
-        isCorrect={isCorrect}
-        getbtnValue={getbtnValue}
-      />
+    <main>
       <Temporizador
         currentTime={currentTime}
         changeIngreseTimeTimer={changeIngreseTimeTimer}
       />
-      <ContadorPuntos
-        setUserAciertos={setUserAciertos}
-        setUserErrores={setUserErrores}
-        aciertos={aciertos}
-        errores={errores}
-        btnValue={btnValue}
-        currentTime={currentTime}
-        changeCurrentTime={changeCurrentTime}
-      />
-      <div>
-        Aciertos: {aciertos} Errores: {errores}
-      </div>
-    </Fragment>
+      <section>
+        <Cards
+          numQuest={numQuest}
+          getSetNumQuest={getSetNumQuest}
+          questions={questions}
+          getCurrentQuestion={getCurrentQuestion}
+        />
+        <section className="button-container">
+          <ButtonWrapper
+            getSetNumQuest={getSetNumQuest}
+            numQuest={numQuest}
+            listResponses={responses}
+            btnValue={btnValue}
+            currentQuestion={currentQuestion}
+            isCorrect={isCorrect}
+            getbtnValue={getbtnValue}
+          />
+        </section>
+        <ContadorPuntos
+          setUserAciertos={setUserAciertos}
+          setUserErrores={setUserErrores}
+          aciertos={aciertos}
+          errores={errores}
+          btnValue={btnValue}
+          currentTime={currentTime}
+          changeCurrentTime={changeCurrentTime}
+        />
+      </section>
+      <article className="h-20 flex gap-3 text-white text-2xl flex justify-center">
+        <span>Aciertos: {aciertos}</span> <span>Errores: {errores}</span>
+      </article>
+    </main>
   );
 }
