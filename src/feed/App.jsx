@@ -22,7 +22,7 @@ export default function App() {
   //Actualizamos el temporizador cada vez que cambia el valor de la variable 'btnValue'
   useEffect(() => {
     if (currentTime === 0) return;
-
+    if(numQuest === questions.length) return setCurrentTime(currentTime);
     const id = setInterval(() => {
       setCurrentTime((currentTime) => currentTime - 1);
     }, increasedTime);
@@ -94,8 +94,7 @@ export default function App() {
   return (
     <main>
       <Temporizador
-        aciertos={aciertos}
-        errores={errores}
+        numQuest={numQuest}
         getQuestionsLength={getQuestionsLength}
         currentTime={currentTime}
         changeCurrentTime={changeCurrentTime}
