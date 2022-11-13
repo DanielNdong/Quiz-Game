@@ -1,7 +1,5 @@
 import { ButtonView } from "./ButtonView";
 
-
-
 export function Button({
   item,
   getbtnValue,

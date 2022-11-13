@@ -1,10 +1,7 @@
 import TemporizadorView from "./TemporizadorView";
 import questions from "../request/questions";
 export function Temporizador({
-  aciertos,
-  errores,
   getQuestionsLength,
-  changeCurrentTime,
   currentTime,
   changeIngreseTimeTimer,
   numQuest,
