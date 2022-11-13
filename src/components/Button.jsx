@@ -1,4 +1,7 @@
 import { ButtonView } from "./ButtonView";
+
+
+
 export function Button({
   item,
   getbtnValue,
@@ -25,12 +28,13 @@ export function Button({
                 getSetNumQuest={getSetNumQuest}
                 numQuest={numQuest}
                 nameClass={
-                  "OptionCorrect hover:bg-green-500 ring ring-green-500"
+                  "OptionCorrect hover:bg-green-500 active:ring active:ring-green-500"
                 }
                 key={index}
                 isCorrect={isCorrect}
                 opt={opt}
                 getbtnValue={getbtnValue}
+                btnValue={btnValue}
               />
             </div>
           );
@@ -44,11 +48,14 @@ export function Button({
               <ButtonView
                 getSetNumQuest={getSetNumQuest}
                 numQuest={numQuest}
-                nameClass={"OptionIncorrect hover:bg-red-500 ring ring-red-500"}
+                nameClass={
+                  "OptionIncorrect hover:bg-red-500 active:ring active:ring-red-500"
+                }
                 key={index}
                 isCorrect={isCorrect}
                 opt={opt}
                 getbtnValue={getbtnValue}
+                btnValue={btnValue}
               />
             </div>
           );
@@ -63,6 +70,7 @@ export function Button({
                 isCorrect={isCorrect}
                 opt={opt}
                 getbtnValue={getbtnValue}
+                btnValue={btnValue}
               />
             </div>
           );

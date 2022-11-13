@@ -7,8 +7,10 @@ export function ButtonWrapper({
   isCorrect,
   btnValue,
   currentQuestion,
+  currentTime,
 }) {
   console.log(numQuest);
+  if(currentTime===0) return
   var myObject = listResponses.filter((item, i) => i == numQuest);
   return (
     <>

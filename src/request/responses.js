@@ -30,7 +30,7 @@ export default [
     a: "0",
   },
   {
-    a: "infinity",
+    a: "Infinity",
     b: "MathError",
     c: "0",
     d: "NaN",

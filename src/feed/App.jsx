@@ -14,11 +14,11 @@ export default function App() {
   const [currentQuestion, setCurrentQuestion] = useState(null); //Respuesta actual / cambiar respuesta
   const [isCorrect, setIsCorrect] = useState(null); //Respuesta acertada o no acertada
   const [numQuest, setNumQuest] = useState(0); //Indice de la respuesta actual / cambiar indice
-  const [currentTime, setCurrentTime] = useState(15); //Tiempo actual
+  const [currentTime, setCurrentTime] = useState(30); //Tiempo actual
   const [increasedTime, setIncreasedTime] = useState(1800); //Vecidad del cambio de tiempo de los intervalos
   const [aciertos, setAciertos] = useState(0);
   const [errores, setErrores] = useState(0);
-  
+
   //Actualizamos el temporizador cada vez que cambia el valor de la variable 'btnValue'
   useEffect(() => {
     if (currentTime === 0) return;
@@ -58,21 +58,16 @@ export default function App() {
 
   //setAciertos
   const setUserAciertos = () => {
-    if (isCorrect) {
+    if (isCorrect && isCorrect !== null) {
       setAciertos((acier) => acier + 1);
     }
   };
 
-  if (currentTime === 0 && aciertos + errores !== questions.length) {
-    return (
-      <main>
-        <Temporizador currentTime={currentTime} />
-        <article className="h-20 flex gap-3 text-white text-2xl flex justify-center">
-          <span>Aciertos: {aciertos}</span> <span>Errores: {errores}</span>
-        </article>
-      </main>
-    );
-  }
+  const getQuestionsLength = () => {
+    return questions.length;
+  };
+
+  //console.log(questions.length + " su tipo");
 
   //Si el valor devuelto por este metodo es true se pasa a la siguiente pregunta automaticamente
   const getbtnValue = (newValue) => {
@@ -84,10 +79,26 @@ export default function App() {
     }
   };
 
+  if (currentTime !== 0 && aciertos + errores === getQuestionsLength) {
+    return (
+      <main>
+        <Temporizador currentTime={currentTime} />
+        <article className="h-20 flex gap-3 text-white text-2xl flex justify-center">
+          <span>Son los Aciertos: {aciertos}</span>{" "}
+          <span>Son los Errores: {errores}</span>
+        </article>
+      </main>
+    );
+  }
+
   return (
     <main>
       <Temporizador
+        aciertos={aciertos}
+        errores={errores}
+        getQuestionsLength={getQuestionsLength}
         currentTime={currentTime}
+        changeCurrentTime={changeCurrentTime}
         changeIngreseTimeTimer={changeIngreseTimeTimer}
       />
       <section>
@@ -96,9 +107,11 @@ export default function App() {
           getSetNumQuest={getSetNumQuest}
           questions={questions}
           getCurrentQuestion={getCurrentQuestion}
+          currentTime={currentTime}
         />
         <section className="button-container">
           <ButtonWrapper
+            currentTime={currentTime}
             getSetNumQuest={getSetNumQuest}
             numQuest={numQuest}
             listResponses={responses}
