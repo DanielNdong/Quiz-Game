@@ -14,7 +14,7 @@ export default function App() {
   const [currentQuestion, setCurrentQuestion] = useState(null); //Respuesta actual / cambiar respuesta
   const [isCorrect, setIsCorrect] = useState(null); //Respuesta acertada o no acertada
   const [numQuest, setNumQuest] = useState(0); //Indice de la respuesta actual / cambiar indice
-  const [currentTime, setCurrentTime] = useState(10); //Tiempo actual
+  const [currentTime, setCurrentTime] = useState(30); //Tiempo actual
   const [increasedTime, setIncreasedTime] = useState(1800); //Vecidad del cambio de tiempo de los intervalos
   const [aciertos, setAciertos] = useState(0);
   const [errores, setErrores] = useState(0);
