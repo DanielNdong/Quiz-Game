@@ -8,8 +8,8 @@ export function ButtonWrapper({
   btnValue,
   currentQuestion,
   currentTime,
-}) 
-  if(currentTime === 0) return
+}) {
+  if (currentTime === 0) return;
   var myObject = listResponses.filter((item, i) => i == numQuest);
   return (
     <>
