@@ -1,6 +1,7 @@
 import { CardView } from "./CardView";
 import "./styles/Cards.css";
-export function Cards({ numQuest, questions, getCurrentQuestion }) {
+export function Cards({ numQuest, questions, getCurrentQuestion, currentTime }) {
+  if(currentTime===0) return
   var newQuestion = questions.filter((item, i) => i == numQuest);
   return (
     <section>

@@ -17,7 +17,8 @@ main > section {
   /*  position: relative; */
   width: 38rem;
   max-width: 80%;
-  height: 70%;
+  margin: 1.3rem 0 0;
+  /*height: 70%;*/
   display: grid;
   gap: 1.5rem;
 }
